@@ -5,18 +5,19 @@
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
-    
+ 
   </head>
+
   <body>
 
     <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
         <a-video
-        width="1.1"
-        height="1.1"
+        width="1"
+        height="1"
         rotation="0 0 0"
         position="0 1 0"
         src="./video.mp4"
@@ -29,9 +30,10 @@
       rotation="0 0 0"
       position="-0.90 0.5 0"
       src="./circle.png"></a-image>
-
       <!-- REDES SOCIALES -->
       <a-image 
+      id="facebook"
+        class="clickable"
       height="0.32"
       width="0.38"
       rotation="0 0 0"
@@ -41,6 +43,8 @@
 
       
       <a-image 
+      id="instagram"
+        class="clickable"
       height="0.32"
       width="0.38"
       rotation="0 0 0"
@@ -55,10 +59,27 @@
         width="1.20"
         rotation="0 0 0"
         src="./2.png"></a-image>
+
+
     
     </a-entity>
      
 
     </a-scene>
+
+    <script>
+        const instagramObj = document.querySelector('#instagram');
+        instagramObj.addEventListener("click", event => {
+            window.open('https://www.instagram.com/simetria_expert/','_blank');
+        });
+
+        const facebookObj = document.querySelector('#facebook');
+        facebookObj.addEventListener("click", event => {
+            window.open('https://m.facebook.com/SimetriaExpert/','_blank');
+        });
+
+      </script>
   </body>
+
+ 
 </html>
